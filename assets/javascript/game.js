@@ -1,5 +1,5 @@
 //-----------Global Variables---------------
-var choises=["sun","mercury","venus","earth","mars","jupiter","saturn","uranus","neptune","pluto"]
+var choises=["sun","mercury","venus","earth","mars","jupiter","saturn","uranus","neptune"];
 var win=0, lose=0; 
 var nGuess=10;
 var wrongGuess=[], word=[], setupSR=[], compGuess=[];
@@ -63,7 +63,6 @@ document.onkeyup = function(event){
 	userGuess = event.key.toLowerCase();
 	compGuess = setupSR[1];
 	word = setupSR[0]; 
-
 	
 	if (compGuess.every(compare)){
 		if (wrongGuess.every(compare)){
