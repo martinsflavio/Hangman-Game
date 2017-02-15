@@ -1,5 +1,5 @@
 //-----------Global Variables---------------
-var choises=["brazil","australia"]
+var choises=["sun","mercury","venus","earth","mars","jupiter","saturn","uranus","neptune","pluto"]
 var win=0, lose=0; 
 var nGuess=10;
 var wrongGuess=[], word=[], setupSR=[], compGuess=[];
@@ -12,6 +12,8 @@ function newGame(choisesArray){
 		for(var i = 0; i < randomWord.length ;i++){
 			spaces[i] = "-";
 	}
+	document.getElementById("word").innerHTML = spaces.join(" ");
+
 	return [spaces,randomWord];
 }
 function printRightGuess(letter,wToCompare,result){
@@ -38,7 +40,7 @@ function checkWin(array1,array2){
 }
 
 function printScreen(){
-	document.getElementById("word").innerHTML = word.join(" ");
+	document.getElementById("word").innerHTML = setupSR[0].join(" ");
 	document.getElementById("wrong-guess").innerHTML = wrongGuess;
 	document.getElementById("n-guesses").innerHTML = nGuess;
 	document.getElementById("times-win").innerHTML = win;
@@ -48,7 +50,6 @@ function reset(){
 	nGuess=10;
 	wrongGuess=[], word=[],compGuess=[];
 	userGuess="";
-	document.getElementById("word").innerHTML = word.join(" ");
 	document.getElementById("wrong-guess").innerHTML = wrongGuess;
 	document.getElementById("n-guesses").innerHTML = nGuess;
 	document.getElementById("times-win").innerHTML = win;
@@ -57,6 +58,7 @@ function reset(){
 
 
 setupSR = newGame(choises);
+
 document.onkeyup = function(event){ 
 	userGuess = event.key.toLowerCase();
 	compGuess = setupSR[1];
@@ -74,16 +76,15 @@ document.onkeyup = function(event){
 
 	if (checkWin(compGuess,word)){
 		win++;
-		setupSR = newGame(choises);
 		reset();
+		setupSR = newGame(choises);
 	}else if(nGuess === 0){
 		lose++;
-		setupSR = newGame(choises);
 		reset();
+		setupSR = newGame(choises);
 	}
 
 	printScreen();
-	console.log(word);
 }
 
 
