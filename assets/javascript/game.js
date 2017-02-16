@@ -54,6 +54,8 @@ function reset(){
 	document.getElementById("n-guesses").innerHTML = nGuess;
 	document.getElementById("times-win").innerHTML = win;
 	document.getElementById("times-lose").innerHTML = lose;
+	document.getElementById("winVideo").removeAttribute("style");
+
 }
 
 
@@ -74,6 +76,7 @@ document.onkeyup = function(event){
 	}
 
 	if (checkWin(compGuess,word)){
+		document.getElementById("winVideo").removeAttribute("style");
 		win++;
 		reset();
 		setupSR = newGame(choises);
@@ -85,11 +88,6 @@ document.onkeyup = function(event){
 
 	printScreen();
 }
-
-
-
-
-
 
 
 
